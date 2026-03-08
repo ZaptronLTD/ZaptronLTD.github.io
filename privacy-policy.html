@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Zaptron Ltd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #040408;
+      --deep: #080c14;
+      --panel: #0d1220;
+      --border: #1a2540;
+      --cyan: #00e5ff;
+      --magenta: #ff006e;
+      --white: #e8f0ff;
+      --muted: #6a7a9b;
+      --font-display: 'Orbitron', monospace;
+      --font-body: 'Exo 2', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Scanline overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 2px,
+        rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
+      );
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      position: fixed;
+      width: 12px; height: 12px;
+      background: var(--cyan);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, background 0.2s;
+      mix-blend-mode: screen;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1px solid var(--cyan);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.25s ease, width 0.2s, height 0.2s, opacity 0.2s;
+      opacity: 0.5;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: linear-gradient(180deg, rgba(4,4,8,0.95) 0%, transparent 100%);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,229,255,0.08);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--cyan); }
+    .nav-back {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--cyan); }
+    .nav-back::before { content: '←'; }
+
+    /* HERO HEADER */
+    .page-header {
+      padding: 10rem 3rem 5rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 30%, transparent 100%);
+    }
+    .header-glow {
+      position: absolute;
+      width: 600px; height: 400px;
+      background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .header-tag {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .header-tag::before { content: ''; width: 30px; height: 1px; background: var(--cyan); }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    .page-title em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--cyan), var(--magenta));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .meta-item span { color: var(--white); }
+
+    /* CONTENT */
+    .policy-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 3rem 6rem;
+    }
+
+    /* Section blocks */
+    .policy-section {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--cyan);
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .policy-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .ps-heading {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .ps-heading::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--cyan);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      flex-shrink: 0;
+    }
+
+    .ps-body p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #9aaabb;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .ps-body p:last-child { margin-bottom: 0; }
+    .ps-body strong { color: var(--white); font-weight: 600; }
+
+    .ps-body ul {
+      list-style: none;
+      margin: 0.75rem 0 1rem;
+      padding: 0;
+    }
+    .ps-body ul li {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #9aaabb;
+      line-height: 1.7;
+      padding: 0.35rem 0 0.35rem 1.5rem;
+      position: relative;
+      border-bottom: 1px solid rgba(26,37,64,0.6);
+    }
+    .ps-body ul li:last-child { border-bottom: none; }
+    .ps-body ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    /* Third-party links */
+    .tp-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .tp-link {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      text-decoration: none;
+      border: 1px solid rgba(0,229,255,0.25);
+      padding: 0.4rem 0.9rem;
+      transition: background 0.2s, border-color 0.2s;
+      clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+    }
+    .tp-link:hover {
+      background: rgba(0,229,255,0.08);
+      border-color: var(--cyan);
+    }
+
+    /* Contact box */
+    .contact-box {
+      margin-top: 1rem;
+      padding: 1.25rem;
+      background: rgba(0,229,255,0.04);
+      border: 1px solid rgba(0,229,255,0.2);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .contact-box-icon { font-size: 1.5rem; }
+    .contact-box-text {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted);
+    }
+    .contact-box-text a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-box-text a:hover { color: var(--white); }
+
+    /* Effective date banner */
+    .effective-banner {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: rgba(255,0,110,0.06);
+      border: 1px solid rgba(255,0,110,0.2);
+      border-left: 3px solid var(--magenta);
+      margin-bottom: 3rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .effective-banner span { color: var(--magenta); }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+    .footer-logo span { color: var(--cyan); }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .page-header { padding: 8rem 1.5rem 3rem; }
+      .header-meta { gap: 0.75rem 1.5rem; }
+      .meta-item { font-size: 0.7rem; }
+      .policy-body { padding: 3rem 1.5rem 4rem; }
+      .policy-section { padding: 1.25rem; }
+      .tp-links { gap: 0.4rem; }
+      .tp-link { font-size: 0.68rem; padding: 0.35rem 0.7rem; }
+      .effective-banner { font-size: 0.75rem; padding: 0.85rem 1rem; }
+      footer { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 400px) {
+      .page-title { font-size: 2.2rem; }
+      .ps-body p, .ps-body ul li { font-size: 0.88rem; }
+    }
+
+    @media (pointer: coarse) {
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">ZAP<span>TRON</span> LTD</a>
+    <a href="index.html" class="nav-back">Back to Home</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="header-grid"></div>
+    <div class="header-glow"></div>
+    <div class="header-inner">
+      <div class="header-tag">Legal</div>
+      <h1 class="page-title">Privacy <em>Policy</em></h1>
+      <div class="header-meta">
+        <div class="meta-item">Applies to: <span>All Zaptron Ltd Applications</span></div>
+        <div class="meta-item">Effective: <span>2 April 2025</span></div>
+        <div class="meta-item">Provider: <span>Zaptron Ltd</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- POLICY CONTENT -->
+  <main class="policy-body">
+
+    <div class="effective-banner">
+      ⚠ &nbsp; This Privacy Policy is effective as of <span>2025-04-02</span>. Continued use of the Application constitutes acceptance of any amendments.
+    </div>
+
+    <!-- Intro -->
+    <div class="policy-section">
+      <div class="ps-heading">Overview</div>
+      <div class="ps-body">
+        <p>This privacy policy applies to all mobile applications (hereby referred to as "Applications") developed and published by <strong>Zaptron Ltd</strong> (hereby referred to as "Service Provider"). This includes all current and future titles released by the Service Provider on any mobile platform.</p>
+        <p>All Applications are provided as free services and are intended for use <strong>"AS IS"</strong>. By downloading or using any Application developed by Zaptron Ltd, you agree to the terms outlined in this privacy policy.</p>
+      </div>
+    </div>
+
+    <!-- Info Collection -->
+    <div class="policy-section">
+      <div class="ps-heading">Information Collection and Use</div>
+      <div class="ps-body">
+        <p>The Application collects information when you download and use it. This information may include:</p>
+        <ul>
+          <li>Your device's Internet Protocol address (e.g. IP address)</li>
+          <li>The pages of the Application that you visit, the time and date of your visit, and the time spent on those pages</li>
+          <li>Total time spent on the Application</li>
+          <li>The operating system you use on your mobile device</li>
+        </ul>
+        <p>The Application does not gather <strong>precise information</strong> about the location of your mobile device. However, it does collect approximate geographical location data, which is used in the following ways:</p>
+        <ul>
+          <li><strong>Geolocation Services:</strong> The Service Provider utilises location data to provide features such as personalised content, relevant recommendations, and location-based services.</li>
+          <li><strong>Analytics and Improvements:</strong> Aggregated and anonymised location data helps the Service Provider analyse user behaviour, identify trends, and improve overall performance.</li>
+          <li><strong>Third-Party Services:</strong> Periodically, the Service Provider may transmit anonymised location data to external services to enhance the Application and optimise their offerings.</li>
+        </ul>
+        <p>The Service Provider may use the information you provided to contact you from time to time with important information, required notices, and marketing promotions.</p>
+      </div>
+    </div>
+
+    <!-- Third Party Access -->
+    <div class="policy-section">
+      <div class="ps-heading">Third Party Access</div>
+      <div class="ps-body">
+        <p>Only aggregated, anonymised data is periodically transmitted to external services to aid the Service Provider in improving the Application. The Service Provider may share your information with third parties as described in this statement.</p>
+        <p>The Application utilises third-party services that have their own Privacy Policies governing data handling. Please review the policies of the following service providers:</p>
+        <div class="tp-links">
+          <a href="https://policies.google.com/privacy" target="_blank" class="tp-link">Google Play Services</a>
+          <a href="https://support.google.com/admob/answer/6128543" target="_blank" class="tp-link">AdMob</a>
+          <a href="https://firebase.google.com/support/privacy" target="_blank" class="tp-link">Google Analytics for Firebase</a>
+          <a href="https://firebase.google.com/support/privacy" target="_blank" class="tp-link">Firebase Crashlytics</a>
+          <a href="https://www.facebook.com/about/privacy" target="_blank" class="tp-link">Facebook Audience Network</a>
+          <a href="https://unity.com/legal/privacy-policy" target="_blank" class="tp-link">Unity Ads</a>
+          <a href="https://www.applovin.com/privacy/" target="_blank" class="tp-link">AppLovin</a>
+          <a href="https://bytebrew.io/privacy-policy" target="_blank" class="tp-link">ByteBrew</a>
+          <a href="https://www.mintegral.com/en/privacy" target="_blank" class="tp-link">Mintegral</a>
+          <a href="https://yandex.com/legal/confidential/" target="_blank" class="tp-link">Yandex</a>
+        </div>
+        <p style="margin-top:1.25rem;">The Service Provider may integrate additional third-party advertising networks or analytics services in the future. In such cases, this Privacy Policy will be updated to reflect any new third-party providers, and their respective privacy policies will govern their handling of your data.</p>
+        <p style="margin-top:1.25rem;">The Service Provider may disclose User Provided and Automatically Collected Information:</p>
+        <ul>
+          <li>As required by law, such as to comply with a subpoena or similar legal process</li>
+          <li>When they believe in good faith that disclosure is necessary to protect their rights, your safety or the safety of others, investigate fraud, or respond to a government request</li>
+          <li>With trusted service providers who work on their behalf, have no independent use of the information disclosed to them, and have agreed to adhere to the rules set forth in this privacy statement</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Opt-Out -->
+    <div class="policy-section">
+      <div class="ps-heading">Opt-Out Rights</div>
+      <div class="ps-body">
+        <p>You can stop all collection of information by the Application easily by uninstalling it. You may use the standard uninstall processes available on your mobile device or via the mobile application marketplace or network.</p>
+      </div>
+    </div>
+
+    <!-- Data Retention -->
+    <div class="policy-section">
+      <div class="ps-heading">Data Retention Policy</div>
+      <div class="ps-body">
+        <p>The Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. If you would like them to delete User Provided Data that you have provided via the Application, please contact them and they will respond in a reasonable time.</p>
+        <div class="contact-box">
+          <div class="contact-box-icon">✉</div>
+          <div class="contact-box-text">
+            Submit a data deletion request to <a href="mailto:zaptron.global@gmail.com">zaptron.global@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Children -->
+    <div class="policy-section">
+      <div class="ps-heading">Children</div>
+      <div class="ps-body">
+        <p>The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of <strong>13</strong>.</p>
+        <p>The Application does not address anyone under the age of 13. The Service Provider does not knowingly collect personally identifiable information from children under 13 years of age. If it is discovered that a child under 13 has provided personal information, it will be immediately deleted from their servers.</p>
+        <p>If you are a parent or guardian and you are aware that your child has provided personal information, please contact the Service Provider so that the necessary actions can be taken.</p>
+        <div class="contact-box">
+          <div class="contact-box-icon">🛡</div>
+          <div class="contact-box-text">
+            Report a child data concern to <a href="mailto:zaptron.global@gmail.com">zaptron.global@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security -->
+    <div class="policy-section">
+      <div class="ps-heading">Security</div>
+      <div class="ps-body">
+        <p>The Service Provider is committed to safeguarding the confidentiality of your information. Physical, electronic, and procedural safeguards are provided to protect information the Service Provider processes and maintains.</p>
+      </div>
+    </div>
+
+    <!-- Changes -->
+    <div class="policy-section">
+      <div class="ps-heading">Changes to This Policy</div>
+      <div class="ps-body">
+        <p>This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly, as continued use of the Application is deemed approval of all changes.</p>
+      </div>
+    </div>
+
+    <!-- Consent -->
+    <div class="policy-section">
+      <div class="ps-heading">Your Consent</div>
+      <div class="ps-body">
+        <p>By using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by the Service Provider.</p>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="policy-section">
+      <div class="ps-heading">Contact Us</div>
+      <div class="ps-body">
+        <p>If you have any questions regarding privacy while using the Application, or have questions about our practices, please contact the Service Provider directly.</p>
+        <div class="contact-box">
+          <div class="contact-box-icon">📡</div>
+          <div class="contact-box-text">
+            Email us at <a href="mailto:zaptron.global@gmail.com">zaptron.global@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">ZAP<span>TRON</span> LTD</div>
+    <div class="footer-copy">© 2025 Zaptron Ltd. All rights reserved.</div>
+    <div class="footer-copy">Effective: 2025-04-02</div>
+  </footer>
+
+  <script>
+    // Cursor — desktop/mouse only
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    if (!isTouch) {
+      document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx + 'px';
+        cursor.style.top = my + 'px';
+      });
+      function animateRing() {
+        rx += (mx - rx) * 0.15;
+        ry += (my - ry) * 0.15;
+        ring.style.left = rx + 'px';
+        ring.style.top = ry + 'px';
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          ring.style.width = '56px'; ring.style.height = '56px'; ring.style.opacity = '0.8';
+          cursor.style.transform = 'translate(-50%,-50%) scale(1.5)';
+        });
+        el.addEventListener('mouseleave', () => {
+          ring.style.width = '36px'; ring.style.height = '36px'; ring.style.opacity = '0.5';
+          cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+        });
+      });
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.policy-section').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
