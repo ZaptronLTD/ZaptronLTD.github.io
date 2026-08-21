@@ -24,15 +24,15 @@
                                  "https://play-lh.googleusercontent.com/VPTa8kRl9zTFhffi7BMCYm319TYXjNoaCHqFKPvob2hRuCdTSmtFS0QMmug0nJSzIB7d=w5120-h2880", 
                                  "https://play-lh.googleusercontent.com/VPTa8kRl9zTFhffi7BMCYm319TYXjNoaCHqFKPvob2hRuCdTSmtFS0QMmug0nJSzIB7d=w5120-h2880"],
   "Indetifier_ID" : "com.zaptronltd.city.fighter.hero.game",
-  "Start_Showing_Ads" : false,
+  "Start_Showing_Ads" : true,
   "showCP" : false,
   "doubleBanner" : false,
-  "hideInterstitials" : true,
-  "showAppOpen" : false,
-  "AdsFrequency" : 300,
-  "canShowBanner" : false,
+  "hideInterstitials" : false,
+  "showAppOpen" : true,
+  "AdsFrequency" : 90,
+  "canShowBanner" : true,
   "showIAPPanel" : false,
   "showIAPMenu" : false,
   "naughtyAmerica" : false,
-  "interCooldown" : 5
+  "interCooldown" : 10
 }
