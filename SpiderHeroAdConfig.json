@@ -2,7 +2,7 @@
   "_comment_positions": "AdPosition mappings: 0=Top, 1=Bottom, 2=TopLeft, 3=TopRight, 4=BottomLeft, 5=BottomRight, 6=Center",
   "_comment_native_size": "NativeTemplateSize mappings: 0=Small, 1=Medium",
     "isAdsEnabled": true,
-    "useTestAds": true,
+    "useTestAds": false,
     "allowTimerAd": true,
     "timerAdIntervalSeconds": 60.0,
     "allowInterstitials": true,
