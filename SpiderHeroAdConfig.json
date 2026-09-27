@@ -4,7 +4,7 @@
     "isAdsEnabled": true,
     "useTestAds": false,
     "allowTimerAd": false,
-    "timerAdIntervalSeconds": 45.0,
+    "timerAdIntervalSeconds": 60.0,
     "allowInterstitials": true,
     "allowInterstitial2": true,
     "allowInterstitial3": false,
