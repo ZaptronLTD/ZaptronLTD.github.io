@@ -37,7 +37,7 @@
     "timerAdIntervalSeconds": 60.0,
     "allowInterstitials": true,
     "allowInterstitial2": true,
-    "allowInterstitial3": false,
+    "allowInterstitial3": true,
     "interstitialCooldownSeconds": 10,
     "allowRewarded": true,
     "allowRewardedInterstitials": false,
