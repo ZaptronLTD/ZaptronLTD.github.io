@@ -2,7 +2,7 @@
   "_comment_mediation": "0=AdMob, 1=AppLovin MAX. Selected once per app launch.",
   "_comment_positions": "AdPosition mappings: 0=Top, 1=Bottom, 2=TopLeft, 3=TopRight, 4=BottomLeft, 5=BottomRight, 6=Center",
   "_comment_native_size": "NativeTemplateSize mappings: 0=Small, 1=Medium",
-    "mediation": 1,
+    "mediation": 0,
     "revenueLoggingEnabled": true,
     "max": {
         "sdkKey": "lgnwz3vlDuZLRSqtkA6NKqiu2TnEGe-v02FdTsK3yxBOvAMZ4oLDWCRIk2A1PqS7WTMqEvGpNAHCTp3fNQBoSU",
