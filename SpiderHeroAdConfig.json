@@ -49,7 +49,7 @@
     "bottomBannerPosition": 2,
     "useAdaptiveForTopBanner": true,
     "useAdaptiveForBottomBanner": false,
-    "allowMrecAds": true,
+    "allowMrecAds": false,
     "mrecAdPosition": 4,
     "mediatedIds": {
         "androidAppOpen": "ca-app-pub-1803506470200817/3571618880",
