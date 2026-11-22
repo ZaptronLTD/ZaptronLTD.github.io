@@ -31,7 +31,7 @@
         "bannerRefreshSeconds": 10,
         "mrecRefreshSeconds": 10
     },
-    "isAdsEnabled": false,
+    "isAdsEnabled": true,
     "useTestAds": false,
     "allowTimerAd": false,
     "timerAdIntervalSeconds": 30.0,
@@ -45,7 +45,7 @@
     "allowBanners": true,
     "showTopBanner": true,
     "showBottomBanner": false,
-    "topBannerPosition": 6,
+    "topBannerPosition": 0,
     "bottomBannerPosition": 2,
     "useAdaptiveForTopBanner": true,
     "useAdaptiveForBottomBanner": false,
